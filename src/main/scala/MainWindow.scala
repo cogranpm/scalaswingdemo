@@ -69,7 +69,7 @@ class AppFrame extends MainFrame() {
 
 }
 
-class MainWindow extends FlowPanel() {
+class MainWindow extends GridPanel(1, 1) {
 
   val splitter: SplitPane = new SplitPane(Orientation.Vertical)
   splitter.dividerLocation = 150
