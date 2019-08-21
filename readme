@@ -1,0 +1,3 @@
+
+use this vm option when launching to get the applie menubar to be in correct place
+-Dapple.laf.useScreenMenuBar=true
