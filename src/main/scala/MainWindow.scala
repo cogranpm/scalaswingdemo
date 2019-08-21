@@ -9,8 +9,11 @@ import java.awt.event._
 import java.awt.event.KeyEvent.VK_B
 import java.awt.image.BufferedImage
 import java.net.URL
-import javax.swing.KeyStroke
 
+import javax.swing.KeyStroke
+import net.miginfocom.layout._
+import net.miginfocom.swing
+import net.miginfocom.swing._
 
 class AppFrame extends MainFrame() {
 
@@ -34,7 +37,11 @@ class AppFrame extends MainFrame() {
 
   menuBar = createMenuBar()
 
+  val migl = new swing.MigLayout()
+
   contents = new MainWindow()
+
+  pack()
 
 
   def createMenuBar(): MenuBar = {
@@ -64,12 +71,13 @@ class AppFrame extends MainFrame() {
 
 class MainWindow extends FlowPanel() {
 
-  val splitter: SplitPane = new SplitPane()
-  splitter.dividerLocation = 200
+  val splitter: SplitPane = new SplitPane(Orientation.Vertical)
+  splitter.dividerLocation = 150
   val btn: Button = new Button ("click here")
   splitter.leftComponent = btn
   val txtScript = new TextArea()
   splitter.rightComponent = txtScript
+  splitter.preferredSize = new Dimension(400, 200)
 
 
   listenTo(btn)
@@ -81,7 +89,9 @@ class MainWindow extends FlowPanel() {
     btn.enabled = false
   }
 
+
   contents += splitter
+
 }
 
 
