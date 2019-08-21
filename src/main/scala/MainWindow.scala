@@ -52,7 +52,7 @@ class AppFrame extends MainFrame() {
         MainWindow.quit()
       }
     })
-    
+
 
     fileMenu.contents += fileMenuQuit
     mb.contents += fileMenu
@@ -64,8 +64,12 @@ class AppFrame extends MainFrame() {
 
 class MainWindow extends FlowPanel() {
 
+  val splitter: SplitPane = new SplitPane()
+  splitter.dividerLocation = 200
   val btn: Button = new Button ("click here")
-  contents += btn
+  splitter.leftComponent = btn
+  val txtScript = new TextArea()
+  splitter.rightComponent = txtScript
 
 
   listenTo(btn)
@@ -76,6 +80,8 @@ class MainWindow extends FlowPanel() {
   def onClickButton(): Unit = {
     btn.enabled = false
   }
+
+  contents += splitter
 }
 
 
