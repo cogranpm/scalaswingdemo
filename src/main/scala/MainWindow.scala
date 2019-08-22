@@ -15,6 +15,8 @@ import net.miginfocom.layout._
 import net.miginfocom.swing
 import net.miginfocom.swing._
 
+import com.parinherm.dialogs._
+
 class AppFrame extends MainFrame() {
 
   title = "FrameDemo2"
@@ -66,11 +68,15 @@ class AppFrame extends MainFrame() {
     val editMenu = new Menu("Edit")
     editMenu.mnemonic = Key.E
 
+    val theFrame = this
     val editMenuAddBook = new MenuItem(new Action("New Book") {
       accelerator = Some(KeyStroke.getKeyStroke("ctrl N"))
       def apply() =
         {
           //new dialog
+          val bookDialog = new  BookDialog(theFrame)
+          bookDialog.open()
+
         }
     })
     editMenuAddBook.mnemonic = Key.N
