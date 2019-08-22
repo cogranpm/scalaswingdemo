@@ -59,11 +59,24 @@ class AppFrame extends MainFrame() {
         MainWindow.quit()
       }
     })
-
+    fileMenuQuit.mnemonic = Key.Q
 
     fileMenu.contents += fileMenuQuit
     mb.contents += fileMenu
-    mb.contents += new Menu("Edit")
+    val editMenu = new Menu("Edit")
+    editMenu.mnemonic = Key.E
+
+    val editMenuAddBook = new MenuItem(new Action("New Book") {
+      accelerator = Some(KeyStroke.getKeyStroke("ctrl N"))
+      def apply() =
+        {
+          //new dialog
+        }
+    })
+    editMenuAddBook.mnemonic = Key.N
+
+    editMenu.contents += editMenuAddBook
+    mb.contents += editMenu
     return mb
   }
 
