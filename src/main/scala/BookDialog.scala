@@ -2,7 +2,7 @@ package com.parinherm.dialogs
 
 import scala.swing._
 import scala.swing.event._
-
+import javax.swing._
 import javax.swing.KeyStroke
 import net.miginfocom.layout._
 import net.miginfocom.swing
@@ -11,32 +11,35 @@ import net.miginfocom.swing._
 
 class BookDialog (owner: Window) extends Dialog (owner) {
   modal = true
-  val panel = new BoxPanel(Orientation.Vertical)
+  val layout = new MigLayout("fill")
+  val panel = new JPanel(layout)
+  //val panel = new FlowPanel()
 
 
   val label = new Label()
   label.text = "fred"
 
   val txtName = new TextField()
+  txtName.editable = true
 
   val btnOk = new Button("OK")
   val btnCancel = new Button("Cancel")
 
 
 
-  panel.contents += label
-  panel.peer.add( txtName.peer, "growx")
-  panel.contents += btnOk
-  panel.contents += btnCancel
+  panel.add(label.peer, "cell 0 0")
+  panel.add( txtName.peer, "cell 1 0, growx")
+  panel.add(btnOk.peer, "cell 0 1")
+  panel.add(btnCancel.peer, "cell 1 1")
 
 
   defaultButton = btnOk
 
-  val layout = new MigLayout("wrap 2", "[shrink] [grow]", "[grow] [grow]")
 
-  panel.peer.setLayout(layout)
-  //this.peer.getContentPane().setLayout(layout)
-  this.contents = panel
+
+  //panel.peer.setLayout(layout)
+  //this.contents = panel
+  peer.add(panel)
   minimumSize = new Dimension(640, 480)
 
 
