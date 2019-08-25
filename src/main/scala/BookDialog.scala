@@ -18,8 +18,9 @@ class BookDialog (owner: Window) extends Dialog (owner) {
   layout.setColumnConstraints("[right]rel[grow, fill]")
   layout.setRowConstraints("[]10[]")
 
+  val mainPanel = new BoxPanel(Orientation.Vertical)
   val panel = new JPanel(layout)
-
+  val buttonPanel = new JPanel(new MigLayout("fillx", "[right]"))
   val label = new Label()
   label.text = "fred"
 
@@ -31,8 +32,8 @@ class BookDialog (owner: Window) extends Dialog (owner) {
 
   panel.add(label.peer)
   panel.add(txtName.peer, "wrap")
-  panel.add(btnOk.peer)
-  panel.add(btnCancel.peer)
+  buttonPanel.add(btnOk.peer, "tag ok")
+  buttonPanel.add(btnCancel.peer, "tag cancel")
 /*
   panel.add(label.peer, "cell 0 0")
   panel.add( txtName.peer, "cell 1 0, growx")
@@ -41,12 +42,10 @@ class BookDialog (owner: Window) extends Dialog (owner) {
 */
 
   defaultButton = btnOk
+  mainPanel.peer.add(panel)
+  mainPanel.peer.add(buttonPanel)
 
-
-
-  //panel.peer.setLayout(layout)
-  //this.contents = panel
-  peer.add(panel)
+  this.peer.add(mainPanel.peer)
   minimumSize = new Dimension(640, 480)
 
 
