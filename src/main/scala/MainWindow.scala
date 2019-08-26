@@ -69,7 +69,7 @@ class AppFrame extends MainFrame() {
     editMenu.mnemonic = Key.E
 
     val theFrame = this
-    val editMenuAddBook = new MenuItem(new Action("New Book") {
+    val editMenuAddBook = new MenuItem(new Action("New Subject") {
       accelerator = Some(KeyStroke.getKeyStroke("ctrl N"))
       def apply() =
         {
