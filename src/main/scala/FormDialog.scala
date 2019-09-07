@@ -24,7 +24,7 @@ class FormDialog (owner: Window) extends Dialog (owner) {
 
   val mainPanel = new BoxPanel(Orientation.Vertical)
   val panel = new JPanel(layout)
-  val buttonPanel = new JPanel(new MigLayout("fillx", "[right]"))
+  val buttonPanel = new JPanel(new MigLayout("fillx", "[right]","[]"))
   val label = new Label()
   label.text = "fred"
 

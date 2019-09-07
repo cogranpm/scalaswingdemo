@@ -15,3 +15,5 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "2.1.1"
 libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
 libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.4"
 libraryDependencies += "com.miglayout" % "miglayout-swing" % "5.0"
+libraryDependencies += "de.sciss" % "syntaxpane" % "1.2.0"
+

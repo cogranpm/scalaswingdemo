@@ -14,6 +14,12 @@ import javax.swing.KeyStroke
 import net.miginfocom.layout._
 import net.miginfocom.swing
 import net.miginfocom.swing._
+import javax.swing.JEditorPane
+import javax.swing.text.EditorKit
+import de.sciss.syntaxpane.actions.ActionUtils
+import de.sciss.syntaxpane.actions.CaretMonitor
+import de.sciss.syntaxpane.DefaultSyntaxKit
+
 
 import com.parinherm.dialogs._
 
@@ -95,7 +101,14 @@ class MainWindow extends GridPanel(1, 1) {
   val btn: Button = new Button ("click here")
   splitter.leftComponent = btn
   val txtScript = new TextArea()
-  splitter.rightComponent = txtScript
+  DefaultSyntaxKit.initKit()
+  val txtSyntax = new JEditorPane()
+  //txtSyntax.setContentType("text/java")
+  txtSyntax.setContentType("text/python")
+  //txtSyntax.setText("public static void main(String[] args) {\n}")
+  txtSyntax.setText("def someFunc(someParam)")
+  //splitter.rightComponent = txtScript
+  splitter.peer.setRightComponent(txtSyntax)
   splitter.preferredSize = new Dimension(400, 200)
 
 
