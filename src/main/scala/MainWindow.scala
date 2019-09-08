@@ -3,18 +3,16 @@ package com.parinherm.scalaswing.demo
 import scala.swing._
 import scala.swing.event.ButtonClicked
 import scala.swing.event.Key
-import javax.swing.{Box, BoxLayout, ImageIcon, JDialog, JFrame, UIManager}
+import javax.swing.{Box, BoxLayout, ImageIcon, JDialog, JEditorPane, JFrame, JScrollPane, KeyStroke, UIManager}
 import java.awt.{BorderLayout, Color, Component, Dimension, Graphics, Image, Point, Toolkit}
 import java.awt.event._
 import java.awt.event.KeyEvent.VK_B
 import java.awt.image.BufferedImage
 import java.net.URL
 
-import javax.swing.KeyStroke
 import net.miginfocom.layout._
 import net.miginfocom.swing
 import net.miginfocom.swing._
-import javax.swing.JEditorPane
 import javax.swing.text.EditorKit
 import de.sciss.syntaxpane.actions.ActionUtils
 import de.sciss.syntaxpane.actions.CaretMonitor
@@ -100,17 +98,15 @@ class MainWindow extends GridPanel(1, 1) {
   splitter.dividerLocation = 150
   val btn: Button = new Button ("click here")
   splitter.leftComponent = btn
-  val txtScript = new TextArea()
+
+  //setting up the editor
   DefaultSyntaxKit.initKit()
   val txtSyntax = new JEditorPane()
-  //txtSyntax.setContentType("text/java")
-  txtSyntax.setContentType("text/python")
-  //txtSyntax.setText("public static void main(String[] args) {\n}")
-  txtSyntax.setText("def someFunc(someParam)")
-  //splitter.rightComponent = txtScript
-  splitter.peer.setRightComponent(txtSyntax)
+  val srcScrollPane = new JScrollPane(txtSyntax)
+  txtSyntax.setContentType("text/java")
+  txtSyntax.setText("public static void main(String[] args) {\n}")
+  splitter.peer.setRightComponent(srcScrollPane)
   splitter.preferredSize = new Dimension(400, 200)
-
 
   listenTo(btn)
   reactions += {
